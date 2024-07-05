@@ -3,9 +3,22 @@ project(planning_main)
 # 添加子目录
 add_subdirectory(pnc_map)
 add_subdirectory(process)
+add_subdirectory(show_result)
 
 # 可执行文件
 add_executable(${PROJECT_NAME} planning_main.cpp)
+
+# 包含头文件
+target_include_directories(${PROJECT_NAME}  
+PUBLIC
+${PNC_Map_Dir}
+)
+
+# 链接动态库
+target_link_libraries(${PROJECT_NAME}  
+PUBLIC
+pnc_map
+)
 
 # 包含头文件
 target_include_directories(${PROJECT_NAME}  
@@ -17,5 +30,18 @@ ${Process_Dir}
 target_link_libraries(${PROJECT_NAME}  
 PUBLIC
 process
+)
+
+
+# 包含头文件
+target_include_directories(${PROJECT_NAME}  
+PUBLIC
+${Show_Result_Dir}
+)
+
+# 链接动态库
+target_link_libraries(${PROJECT_NAME}  
+PUBLIC
+show_result
 )
 
